@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакти — Жива Музика</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheed" href="style1.css">
+
+</head>
+<body>
+
+  <!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Жива Музика</a>
+  <ul class="nav-links">
+    <li><a href="#about-section">Про нас</a></li>
+    <li><a href="#events-section">Концерти</a></li>
+    <li><a href="genres.html">Жанри</a></li>
+    <li><a href="about.html">Контакт</a></li>
+  </ul>
+</nav>
+  
+  <!-- Floating music notes -->
+  <div class="float-notes" aria-hidden="true">
+    <span class="note">♩</span>
+    <span class="note">♪</span>
+    <span class="note">♫</span>
+    <span class="note">♬</span>
+    <span class="note">♩</span>
+    <span class="note">♪</span>
+    <span class="note">𝄞</span>
+    <span class="note">♫</span>
+  </div>
+
+  <!-- Animated background grid -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- НАВІГАЦІЯ -->
+  <nav>
+    <a href="index.html" class="nav-logo">Жива Музика</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about-section">Про нас</a></li>
+      <li><a href="index.html#events-section">Концерти</a></li>
+      <li><a href="index.html#genres-section">Жанри</a></li>
+      <li><a href="contact.html" class="active">Контакт</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <div class="orb orb-3" aria-hidden="true"></div>
+    <div class="header-line" aria-hidden="true"></div>
+    <div class="header-line" aria-hidden="true"></div>
+    <h1 class="page-title">Зв'язок</h1>
+    <p class="page-subtitle">Хочете організувати виступ, купити квитки на приватну сесію чи маєте інші питання? Ми завжди на зв'язку.</p>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="contact-container">
+
+      <!-- LEFT: Info -->
+      <div class="contact-info">
+        <p class="section-label">Наші контакти</p>
+
+        <!-- Waveform decoration -->
+        <div class="waveform" aria-hidden="true">
+          <div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div><div class="wave-bar"></div>
+        </div>
+
+        <div class="info-card">
+          <div class="shimmer" aria-hidden="true"></div>
+          <div class="info-icon">Ad</div>
+          <div class="info-title">Адреса (Головний Клуб)</div>
+          <div class="info-text">вул. Нижній Вал 19,<br>Київ, Україна 04071</div>
+        </div>
+
+        <div class="info-card">
+          <div class="shimmer" aria-hidden="true"></div>
+          <div class="info-icon">Te</div>
+          <div class="info-title">Телефон</div>
+          <div class="info-text"><a href="tel:+380441234567">+380 (44) 123-45-67</a></div>
+        </div>
+
+        <div class="info-card">
+          <div class="shimmer" aria-hidden="true"></div>
+          <div class="info-icon">Ma</div>
+          <div class="info-title">Електронна пошта</div>
+          <div class="info-text"><a href="mailto:hello@livemusic.kyiv.ua">hello@livemusic.kyiv.ua</a></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="contact-form">
+        <h3>Написати нам</h3>
+
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Ваше Ім'я</label>
+            <div class="input-wrap">
+              <input type="text" id="name" name="name" placeholder="Джон Колтрейн" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Ваш Email</label>
+            <div class="input-wrap">
+              <input type="email" id="email" name="email" placeholder="jazz@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Тема повідомлення</label>
+            <div class="input-wrap">
+              <input type="text" id="subject" name="subject" placeholder="Бронювання квитків..." required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Текст повідомлення</label>
+            <div class="input-wrap">
+              <textarea id="message" name="message" rows="6" placeholder="Розкажіть нам про свої побажання..." required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <span>Відправити повідомлення</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Жива Музика</span>
+    <p class="footer-copy">© 2025 · Всі права захищено</p>
+    <ul class="footer-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Spotify</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
