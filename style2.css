@@ -1,0 +1,178 @@
+ :root {
+      /* СПІЛЬНА ТЕМНА ПАЛІТРА */
+      --bg:      #070707;
+      --surface: #111111;
+      --card:    #161616;
+      --border:  #262626;
+      --muted:   #737373;
+      --soft:    #a3a3a3;
+      --text:    #d4d4d4;
+      --bright:  #ffffff;
+      
+      --accent:  #d90429; 
+      --accent2: #ef233c; 
+      --gold:    #8b0000; 
+    }
+ 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      background: var(--bg); color: var(--text); font-family: 'Montserrat', sans-serif;
+      font-weight: 300; font-size: 14px; letter-spacing: 0.03em; overflow-x: hidden;
+      display: flex; flex-direction: column; min-height: 100vh;
+    }
+ 
+    /* ── FILM GRAIN ── */
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 200; pointer-events: none; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px; animation: grain 0.35s steps(1) infinite;
+    }
+    @keyframes grain {
+      0%,100%{background-position:0 0}10%{background-position:-5% -10%}
+      20%{background-position:-15% 5%}30%{background-position:7% -25%}
+      40%{background-position:-5% 25%}50%{background-position:-15% 10%}
+      60%{background-position:15% 0}70%{background-position:0 15%}
+      80%{background-position:3% 35%}90%{background-position:-10% 10%}
+    }
+ 
+    /* ═══ NAV ═══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.3rem 3rem; background: rgba(3, 3, 3, 0.85); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bright); text-decoration: none; position: relative; }
+    .nav-logo::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: var(--accent); transition: width 0.4s ease; }
+    .nav-logo:hover::after { width: 100%; }
+ 
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; transition: color 0.3s; position: relative; padding-bottom: 2px; }
+    
+    .nav-links a.active { color: var(--bright); }
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.35s ease; }
+    .nav-links a:hover { color: var(--bright); }
+    .nav-links a:hover::after { width: 100%; }
+ 
+    /* ═══ HEADER СТОРІНКИ ═══ */
+    .page-header {
+      padding: 11rem 3rem 5rem; text-align: center; position: relative;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(217, 4, 41, 0.08) 0%, var(--bg) 70%);
+      border-bottom: 1px solid var(--border); overflow: hidden;
+    }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+    .orb-1 { width: 400px; height: 400px; background: rgba(217, 4, 41, 0.1); top: -100px; left: 20%; animation: orbPulse 9s ease-in-out infinite alternate; }
+    .orb-2 { width: 350px; height: 350px; background: rgba(139, 0, 0, 0.15); bottom: -100px; right: 10%; animation: orbPulse 11s ease-in-out infinite alternate-reverse; }
+    @keyframes orbPulse { from { transform: scale(1); opacity: 0.6;} to { transform: scale(1.15); opacity: 1;} }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 400; color: var(--bright); margin-bottom: 1.5rem; position: relative; z-index: 2; line-height: 0.9;
+    }
+    .page-title em {
+      font-style: italic; background: linear-gradient(135deg, var(--accent2) 20%, var(--gold) 80%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-subtitle { font-size: 0.75rem; letter-spacing: 0.12em; color: var(--text); text-transform: uppercase; max-width: 480px; margin: 0 auto; line-height: 2.2; position: relative; z-index: 2; }
+
+    /* ═══ ЖУРНАЛЬНА СІТКА ЖАНРІВ (Editorial Design) ═══ */
+    main { flex: 1; padding: 6rem 3rem; position: relative; z-index: 5; background: var(--bg); }
+    
+    .genres-showcase {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 3rem;
+    }
+
+    .genre-row {
+      display: grid; grid-template-columns: 140px 1fr; gap: 4rem;
+      align-items: center; background: var(--surface);
+      border: 1px solid var(--border); padding: 4.5rem;
+      position: relative; overflow: hidden; transition: all 0.5s ease;
+    }
+
+    /* Лазерна лінія на горі блоку при ховері */
+    .genre-row::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0); transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .genre-row:hover { background: #130a0b; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border-color: rgba(217, 4, 41, 0.3); transform: translateY(-3px); }
+    .genre-row:hover::before { transform: scaleX(1); }
+
+    /* Велетенська прозора цифра */
+    .genre-number {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(6rem, 8vw, 8rem);
+      font-weight: 300; line-height: 0.8; letter-spacing: -0.02em;
+      color: transparent; /* Робимо всередині порожньою */
+      -webkit-text-stroke: 1px var(--border); /* Контур */
+      transition: all 0.5s ease; text-align: center; user-select: none;
+    }
+    .genre-row:hover .genre-number {
+      -webkit-text-stroke: 1px var(--accent); color: rgba(217, 4, 41, 0.1); text-shadow: 0 0 30px rgba(217,4,41,0.4);
+    }
+
+    /* Інфо-частина */
+    .genre-content { border-left: 1px solid var(--border); padding-left: 4rem; position: relative; }
+    
+    .genre-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.5rem; }
+    .tag {
+      font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+      border: 1px solid var(--border); padding: 0.3rem 0.8rem;
+      transition: color 0.4s, border-color 0.4s;
+    }
+    .genre-row:hover .tag { color: var(--bright); border-color: rgba(217, 4, 41, 0.5); background: rgba(217, 4, 41, 0.05); }
+
+    .genre-title { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 400; color: var(--bright); margin-bottom: 1rem; transition: color 0.4s; }
+    .genre-row:hover .genre-title { color: var(--accent2); }
+    
+    .genre-text { font-size: 0.82rem; line-height: 2.1; color: var(--soft); max-width: 540px; margin-bottom: 2rem; }
+    
+    /* Лінк-Стрілочка */
+    .genre-link {
+      display: inline-flex; align-items: center; gap: 0.8rem; text-decoration: none;
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--text); font-weight: 400; transition: color 0.3s;
+    }
+    .genre-link .line { width: 40px; height: 1px; background: var(--text); transition: width 0.3s, background 0.3s; }
+    .genre-row:hover .genre-link { color: var(--bright); }
+    .genre-row:hover .genre-link .line { width: 70px; background: var(--accent); }
+
+    /* CTA Bottom */
+    .cta-box { text-align: center; padding: 5rem 0 2rem; }
+    .cta-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--soft); margin-bottom: 2rem; font-style: italic; }
+
+    /* BUTTON (СПІЛЬНА З ГОЛОВНОЇ) */
+    .btn { display: inline-block; padding: 1rem 2.6rem; border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; position: relative; overflow: hidden; transition: color 0.4s, border-color 0.4s; }
+    .btn::before { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-101%); transition: transform 0.42s cubic-bezier(0.4,0,0.2,1); z-index: -1; }
+    .btn:hover { color: var(--bright); border-color: var(--accent); box-shadow: 0 0 15px rgba(217,4,41,0.3); }
+    .btn:hover::before { transform: translateX(0); }
+
+    /* ═══ FOOTER ═══ */
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; background: #000; margin-top: auto; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .footer-copy { font-size: 0.58rem; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400; color: var(--muted); text-decoration: none; transition: color 0.3s; position: relative; }
+    .footer-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px; background: var(--accent); transition: width 0.35s; }
+    .footer-links a:hover { color: var(--bright); }
+    .footer-links a:hover::after { width: 100%; }
+
+    /* ═══ РЕСПОНСИВ (АДАПТИВНІСТЬ) ═══ */
+    @media (max-width: 900px) {
+      .genre-row { grid-template-columns: 1fr; padding: 3rem; gap: 2rem; }
+      .genre-content { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 2rem; }
+      .genre-number { text-align: left; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1.1rem 1.5rem; flex-wrap: wrap; justify-content: center; gap: 1rem;}
+      .nav-logo { display: block; text-align: center; width: 100%; }
+      .nav-links { gap: 1rem; }
+      .page-header { padding: 10rem 1.5rem 4rem; }
+      main { padding: 4rem 1.5rem; }
+      .genre-row { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
