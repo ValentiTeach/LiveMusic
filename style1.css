@@ -1,4 +1,5 @@
  :root {
+      /* СПІЛЬНІ ТЕМНІ ТА ЧЕРВОНІ КОЛЬОРИ (як на головній) */
       --bg:      #070707;
       --surface: #111111;
       --card:    #161616;
@@ -7,6 +8,7 @@
       --soft:    #a3a3a3;
       --text:    #d4d4d4;
       --bright:  #ffffff;
+      
       --accent:  #d90429; 
       --accent2: #ef233c; 
       --gold:    #8b0000; 
@@ -27,8 +29,8 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
-    /* ── FILM GRAIN ── */
+ 
+    /* ── FILM GRAIN (Легкий кіно-шум) ── */
     body::before {
       content: ''; position: fixed; inset: 0; z-index: 200; pointer-events: none; opacity: 0.035;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -41,449 +43,132 @@
       60%{background-position:15% 0}70%{background-position:0 15%}
       80%{background-position:3% 35%}90%{background-position:-10% 10%}
     }
-
-    /* ── SCAN LINES overlay ── */
-    body::after {
-      content: ''; position: fixed; inset: 0; z-index: 199; pointer-events: none;
-      background: repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 3px,
-        rgba(0,0,0,0.04) 3px,
-        rgba(0,0,0,0.04) 4px
-      );
-    }
-
-    /* ═══ НАВІГАЦІЯ ═══ */
+ 
+    /* ═══ НАВІГАЦІЯ (СПІЛЬНА) ═══ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 1.3rem 3rem; background: rgba(3,3,3,0.88); backdrop-filter: blur(18px);
+      padding: 1.3rem 3rem; background: rgba(3, 3, 3, 0.85); backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
-      animation: navSlideDown 0.8s cubic-bezier(0.16,1,0.3,1) both;
     }
-    @keyframes navSlideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
-    }
-
     .nav-logo {
       font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400;
       letter-spacing: 0.22em; text-transform: uppercase; color: var(--bright); text-decoration: none; position: relative;
     }
     .nav-logo::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: var(--accent); transition: width 0.4s ease; }
     .nav-logo:hover::after { width: 100%; }
-
+ 
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links li { animation: navItemFade 0.6s ease both; }
-    .nav-links li:nth-child(1) { animation-delay: 0.15s; }
-    .nav-links li:nth-child(2) { animation-delay: 0.25s; }
-    .nav-links li:nth-child(3) { animation-delay: 0.35s; }
-    .nav-links li:nth-child(4) { animation-delay: 0.45s; }
-    @keyframes navItemFade {
-      from { opacity: 0; transform: translateY(-8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
     .nav-links a {
       text-decoration: none; color: var(--muted); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; transition: color 0.3s; position: relative; padding-bottom: 2px;
     }
+    /* Посилання, що вказує на поточну сторінку (Контакти) */
     .nav-links a.active { color: var(--bright); }
     .nav-links a.active::after { width: 100%; }
+    
     .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.35s ease; }
     .nav-links a:hover { color: var(--bright); }
     .nav-links a:hover::after { width: 100%; }
-
-    /* ═══ ANIMATED BACKGROUND GRID ═══ */
-    .bg-grid {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
-    }
-    .bg-grid::before {
-      content: '';
-      position: absolute; inset: -50%;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.3;
-      animation: gridDrift 60s linear infinite;
-    }
-    @keyframes gridDrift {
-      from { transform: translate(0,0); }
-      to   { transform: translate(60px,60px); }
-    }
-
-    /* ═══ VIGNETTE ═══ */
-    .vignette {
-      position: fixed; inset: 0; z-index: 1; pointer-events: none;
-      background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 40%, rgba(0,0,0,0.7) 100%);
-    }
-
-    /* ═══ PAGE HEADER ═══ */
+ 
+    /* ═══ HEADER СТОРІНКИ ═══ */
     .page-header {
       padding: 11rem 3rem 5rem;
       text-align: center;
-      position: relative; z-index: 5;
-      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(217,4,41,0.08) 0%, transparent 70%);
+      position: relative;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(217, 4, 41, 0.08) 0%, var(--bg) 70%);
       border-bottom: 1px solid var(--border);
       overflow: hidden;
     }
-
-    /* Animated orbs */
+    
+    /* Декоративні червоні сяйва (Орби) */
     .orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
-    .orb-1 {
-      width: 350px; height: 350px; background: rgba(217,4,41,0.12);
-      top: -80px; left: -80px;
-      animation: orbPulse 8s ease-in-out infinite alternate, orbDrift1 20s ease-in-out infinite;
-    }
-    .orb-2 {
-      width: 450px; height: 450px; background: rgba(139,0,0,0.12);
-      bottom: -120px; right: -60px;
-      animation: orbPulse 10s ease-in-out infinite alternate-reverse, orbDrift2 25s ease-in-out infinite;
-    }
-    .orb-3 {
-      width: 200px; height: 200px; background: rgba(217,4,41,0.07);
-      top: 50%; left: 50%; transform: translate(-50%,-50%);
-      animation: orbPulse 6s ease-in-out infinite;
-    }
-    @keyframes orbPulse {
-      from { opacity: 0.6; transform: scale(1); }
-      to   { opacity: 1;   transform: scale(1.25); }
-    }
-    @keyframes orbDrift1 {
-      0%,100% { transform: translate(0,0); }
-      33%     { transform: translate(40px, 30px); }
-      66%     { transform: translate(-20px, 50px); }
-    }
-    @keyframes orbDrift2 {
-      0%,100% { transform: translate(0,0); }
-      50%     { transform: translate(-40px, -30px); }
-    }
+    .orb-1 { width: 300px; height: 300px; background: rgba(217, 4, 41, 0.1); top: -50px; left: -50px; animation: orbPulse 8s ease-in-out infinite alternate; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(139, 0, 0, 0.1); bottom: -100px; right: 0; animation: orbPulse 10s ease-in-out infinite alternate-reverse; }
+    @keyframes orbPulse { from { transform: scale(1); opacity: 0.7;} to { transform: scale(1.2); opacity: 1;} }
 
-    /* Decorative horizontal lines in header */
-    .header-line {
-      position: absolute; height: 1px; left: 0; right: 0; opacity: 0.15;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      animation: lineSweep 4s ease-in-out infinite;
-    }
-    .header-line:nth-child(1) { top: 30%; animation-delay: 0s; }
-    .header-line:nth-child(2) { top: 65%; animation-delay: 1.5s; }
-    @keyframes lineSweep {
-      0%   { opacity: 0;    transform: scaleX(0); }
-      40%  { opacity: 0.2;  transform: scaleX(1); }
-      60%  { opacity: 0.15; transform: scaleX(1); }
-      100% { opacity: 0;    transform: scaleX(0); }
-    }
-
-    /* Title animation */
     .page-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 300; color: var(--bright);
-      margin-bottom: 1.2rem; position: relative; z-index: 2;
-      letter-spacing: 0.08em;
-      animation: titleReveal 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s both;
-      text-shadow: 0 0 60px rgba(217,4,41,0.2);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 400; color: var(--bright);
+      margin-bottom: 1rem; position: relative; z-index: 2;
     }
-    @keyframes titleReveal {
-      from { opacity: 0; transform: translateY(30px) skewY(2deg); filter: blur(8px); }
-      to   { opacity: 1; transform: translateY(0) skewY(0deg);   filter: blur(0); }
-    }
-
-    /* Animated title underline */
-    .page-title::after {
-      content: '';
-      display: block;
-      width: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      margin: 0.6rem auto 0;
-      animation: titleUnderline 1s ease 1.4s forwards;
-    }
-    @keyframes titleUnderline {
-      to { width: 120px; }
-    }
-
     .page-subtitle {
-      font-size: 0.72rem; letter-spacing: 0.14em; color: var(--soft); text-transform: uppercase;
-      max-width: 420px; margin: 0 auto; line-height: 1.9; position: relative; z-index: 2;
-      animation: fadeUp 1s ease 0.7s both;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
+      font-size: 0.75rem; letter-spacing: 0.12em; color: var(--soft); text-transform: uppercase;
+      max-width: 400px; margin: 0 auto; line-height: 1.8; position: relative; z-index: 2;
     }
 
-    /* ═══ MAIN ═══ */
+    /* ═══ ГОЛОВНИЙ БЛОК КОНТАКТІВ ═══ */
     main { flex: 1; padding: 6rem 3rem; position: relative; z-index: 5; }
-
+    
     .contact-container {
       max-width: 1100px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
     }
 
-    /* ═══ LEFT COLUMN ═══ */
+    /* Ліва колонка (Інформація) */
     .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
-
+    
     .section-label {
-      font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--accent);
-      margin-bottom: 2rem; font-weight: 400; display: flex; align-items: center; gap: 1rem;
-      animation: fadeUp 0.8s ease 0.9s both;
+      font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; font-weight: 400; display: flex; align-items: center; gap: 1rem;
     }
     .section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--border), transparent); }
 
-    /* Staggered card entries */
     .info-card {
       background: var(--card); padding: 2.5rem; border: 1px solid var(--border);
-      position: relative; overflow: hidden; transition: background 0.4s, border-color 0.4s, transform 0.4s;
-      animation: cardSlideIn 0.7s cubic-bezier(0.16,1,0.3,1) both;
+      position: relative; overflow: hidden; transition: background 0.3s;
     }
-    .info-card:nth-child(2) { animation-delay: 1s; }
-    .info-card:nth-child(3) { animation-delay: 1.15s; }
-    .info-card:nth-child(4) { animation-delay: 1.3s; }
-    @keyframes cardSlideIn {
-      from { opacity: 0; transform: translateX(-24px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-
-    .info-card:hover {
-      background: #130608;
-      border-color: rgba(217,4,41,0.3);
-      transform: translateX(4px);
-    }
-
-    /* Animated red sweep line on hover */
+    .info-card:hover { background: #160a0b; }
     .info-card::after {
       content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px;
-      background: linear-gradient(to right, var(--accent2), var(--accent));
-      transition: width 0.5s cubic-bezier(0.16,1,0.3,1);
+      background: linear-gradient(to right, var(--accent2), var(--accent)); transition: width 0.4s ease;
     }
     .info-card:hover::after { width: 100%; }
 
-    /* Left accent bar */
-    .info-card::before {
-      content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 0;
-      background: var(--accent);
-      transition: height 0.5s cubic-bezier(0.16,1,0.3,1);
-    }
-    .info-card:hover::before { height: 100%; }
-
-    /* Shimmer effect inside card */
-    .info-card .shimmer {
-      position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(105deg, transparent 40%, rgba(217,4,41,0.04) 50%, transparent 60%);
-      background-size: 200% 200%;
-      opacity: 0;
-      transition: opacity 0.3s;
-      animation: shimmerMove 2s linear infinite;
-    }
-    .info-card:hover .shimmer { opacity: 1; }
-    @keyframes shimmerMove {
-      from { background-position: 200% 0; }
-      to   { background-position: -200% 0; }
-    }
-
-    .info-icon {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic;
-      color: var(--accent); margin-bottom: 1rem;
-      transition: transform 0.4s;
-    }
-    .info-card:hover .info-icon { transform: scale(1.1); }
-
-    .info-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
-    .info-text {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--bright); line-height: 1.4;
-      transition: color 0.3s;
-    }
+    .info-icon { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--accent); margin-bottom: 1rem; }
+    .info-title { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+    .info-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--bright); line-height: 1.3; }
     .info-text a { color: var(--bright); text-decoration: none; transition: color 0.3s; }
     .info-text a:hover { color: var(--accent2); }
 
-    /* ═══ RIGHT COLUMN — FORM ═══ */
+    /* Права колонка (Форма) */
     .contact-form {
       background: var(--card); border: 1px solid var(--border); padding: 3rem;
-      position: relative; overflow: hidden;
-      animation: formReveal 0.9s cubic-bezier(0.16,1,0.3,1) 0.9s both;
-      transition: border-color 0.4s;
-    }
-    .contact-form:hover { border-color: rgba(217,4,41,0.2); }
-    @keyframes formReveal {
-      from { opacity: 0; transform: translateY(30px) scale(0.98); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    /* Corner decoration */
-    .contact-form::before {
-      content: '';
-      position: absolute; top: 0; right: 0;
-      width: 80px; height: 80px;
-      border-top: 1px solid rgba(217,4,41,0.3);
-      border-right: 1px solid rgba(217,4,41,0.3);
-      transition: width 0.5s, height 0.5s;
-    }
-    .contact-form:hover::before { width: 120px; height: 120px; }
-
-    .contact-form::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0;
-      width: 60px; height: 60px;
-      border-bottom: 1px solid rgba(217,4,41,0.2);
-      border-left: 1px solid rgba(217,4,41,0.2);
-      transition: width 0.5s, height 0.5s;
-    }
-    .contact-form:hover::after { width: 100px; height: 100px; }
-
-    .contact-form h3 {
-      font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 400;
-      color: var(--bright); margin-bottom: 2rem;
       position: relative;
     }
-    .contact-form h3::after {
-      content: '';
-      display: block; width: 0; height: 1px; margin-top: 0.5rem;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      animation: h3Line 0.8s ease 1.7s forwards;
-    }
-    @keyframes h3Line { to { width: 70px; } }
-
-    .form-group {
-      margin-bottom: 1.5rem; position: relative;
-      animation: fadeUp 0.5s ease both;
-    }
-    .form-group:nth-child(1) { animation-delay: 1.3s; }
-    .form-group:nth-child(2) { animation-delay: 1.4s; }
-    .form-group:nth-child(3) { animation-delay: 1.5s; }
-    .form-group:nth-child(4) { animation-delay: 1.6s; }
-
-    .form-group label {
-      display: block; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 0.5rem;
-      transition: color 0.3s;
-    }
-    .form-group:focus-within label { color: var(--accent); }
-
+    
+    .contact-form h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 400; color: var(--bright); margin-bottom: 2rem; }
+    
+    .form-group { margin-bottom: 1.5rem; position: relative; }
+    .form-group label { display: block; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    
     .form-group input, .form-group textarea {
       width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 1rem;
       font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--bright);
-      outline: none; transition: border-color 0.3s, box-shadow 0.3s, background 0.3s; resize: none;
+      outline: none; transition: border-color 0.3s, box-shadow 0.3s; resize: none;
     }
-    .form-group input:focus, .form-group textarea:focus {
-      border-color: var(--accent);
-      background: #0d0506;
-      box-shadow: 0 0 0 1px rgba(217,4,41,0.15), 0 0 20px rgba(217,4,41,0.1);
-    }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: #444; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(217, 4, 41, 0.15); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #555; }
 
-    /* Floating underline animation on focus */
-    .form-group .input-wrap { position: relative; }
-    .form-group .input-wrap::after {
-      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%; height: 1px;
-      background: var(--accent);
-      transition: left 0.4s cubic-bezier(0.16,1,0.3,1), right 0.4s cubic-bezier(0.16,1,0.3,1);
-    }
-    .form-group input:focus ~ .input-wrap::after,
-    .form-group .input-wrap:focus-within::after { left: 0; right: 0; }
-
-    /* ── Submit button ── */
+    /* Кнопка */
     .btn-submit {
       display: inline-block; width: 100%; padding: 1.2rem; border: 1px solid var(--accent);
       background: transparent; color: var(--bright); text-align: center; cursor: pointer;
       font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
-      position: relative; overflow: hidden; transition: color 0.4s, box-shadow 0.4s; margin-top: 1rem;
-      animation: fadeUp 0.5s ease 1.8s both;
+      position: relative; overflow: hidden; transition: color 0.4s; margin-top: 1rem;
     }
     .btn-submit::before {
-      content: ''; position: absolute; inset: 0;
-      background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); z-index: 0;
+      content: ''; position: absolute; inset: 0; background: var(--accent); transform: scaleY(0); transform-origin: bottom; transition: transform 0.4s ease; z-index: -1;
     }
-    .btn-submit:hover { color: #fff; box-shadow: 0 0 30px rgba(217,4,41,0.4); }
-    .btn-submit:hover::before { transform: scaleX(1); }
+    .btn-submit:hover { color: #fff; }
+    .btn-submit:hover::before { transform: scaleY(1); }
     .btn-submit span { position: relative; z-index: 1; }
 
-    /* Pulsing border on button */
-    .btn-submit::after {
-      content: ''; position: absolute; inset: -2px;
-      border: 1px solid var(--accent);
-      opacity: 0;
-      animation: btnPulse 2.5s ease-in-out 2s infinite;
-    }
-    @keyframes btnPulse {
-      0%,100% { opacity: 0; transform: scale(1); }
-      50%      { opacity: 0.4; transform: scale(1.02); }
-    }
-
-    /* ═══ MUSIC NOTES FLOATING DECORATIONS ═══ */
-    .float-notes { position: fixed; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
-    .note {
-      position: absolute;
-      font-family: 'Cormorant Garamond', serif;
-      color: rgba(217,4,41,0.06);
-      font-size: 2rem; font-style: italic;
-      animation: floatNote linear infinite;
-      user-select: none;
-    }
-    .note:nth-child(1)  { left: 5%;  font-size: 1.4rem; animation-duration: 22s; animation-delay: 0s;    bottom: -50px; }
-    .note:nth-child(2)  { left: 15%; font-size: 2.2rem; animation-duration: 28s; animation-delay: -8s;   bottom: -50px; }
-    .note:nth-child(3)  { left: 28%; font-size: 1rem;   animation-duration: 18s; animation-delay: -3s;   bottom: -50px; }
-    .note:nth-child(4)  { left: 40%; font-size: 2.5rem; animation-duration: 32s; animation-delay: -15s;  bottom: -50px; }
-    .note:nth-child(5)  { left: 55%; font-size: 1.6rem; animation-duration: 24s; animation-delay: -6s;   bottom: -50px; }
-    .note:nth-child(6)  { left: 68%; font-size: 0.9rem; animation-duration: 20s; animation-delay: -11s;  bottom: -50px; }
-    .note:nth-child(7)  { left: 80%; font-size: 2rem;   animation-duration: 26s; animation-delay: -4s;   bottom: -50px; }
-    .note:nth-child(8)  { left: 90%; font-size: 1.3rem; animation-duration: 22s; animation-delay: -18s;  bottom: -50px; }
-    @keyframes floatNote {
-      from { transform: translateY(0) rotate(-10deg);   opacity: 0; }
-      10%  { opacity: 1; }
-      90%  { opacity: 0.5; }
-      to   { transform: translateY(-110vh) rotate(10deg); opacity: 0; }
-    }
-
-    /* ═══ WAVEFORM DECORATIVE (CSS only) ═══ */
-    .waveform {
-      display: flex; align-items: center; gap: 3px; margin-bottom: 3rem;
-      animation: fadeUp 0.8s ease 1s both;
-    }
-    .wave-bar {
-      width: 2px; background: var(--accent); border-radius: 1px;
-      animation: waveAnim 1s ease-in-out infinite alternate;
-    }
-    .wave-bar:nth-child(1)  { height: 8px;  animation-delay: 0.0s; }
-    .wave-bar:nth-child(2)  { height: 18px; animation-delay: 0.1s; }
-    .wave-bar:nth-child(3)  { height: 12px; animation-delay: 0.2s; }
-    .wave-bar:nth-child(4)  { height: 24px; animation-delay: 0.3s; }
-    .wave-bar:nth-child(5)  { height: 10px; animation-delay: 0.4s; }
-    .wave-bar:nth-child(6)  { height: 20px; animation-delay: 0.5s; }
-    .wave-bar:nth-child(7)  { height: 14px; animation-delay: 0.15s;}
-    .wave-bar:nth-child(8)  { height: 6px;  animation-delay: 0.25s;}
-    .wave-bar:nth-child(9)  { height: 22px; animation-delay: 0.35s;}
-    .wave-bar:nth-child(10) { height: 9px;  animation-delay: 0.45s;}
-    @keyframes waveAnim {
-      from { transform: scaleY(0.3); opacity: 0.4; }
-      to   { transform: scaleY(1);   opacity: 1; }
-    }
-
-    /* ═══ FOOTER ═══ */
-    footer {
-      border-top: 1px solid var(--border); padding: 2.5rem 3rem;
-      display: flex; justify-content: space-between; align-items: center;
-      background: #000; margin-top: auto; position: relative; z-index: 5;
-    }
-    /* Footer shimmer line */
-    footer::before {
-      content: '';
-      position: absolute; top: 0; left: -100%; width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      animation: footerSweep 6s ease-in-out infinite;
-    }
-    @keyframes footerSweep {
-      from { left: -100%; }
-      to   { left: 100%; }
-    }
+    /* ═══ FOOTER (СПІЛЬНИЙ) ═══ */
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; background: #000; margin-top: auto; }
     .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
     .footer-copy { font-size: 0.58rem; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; }
     .footer-links { display: flex; gap: 2rem; list-style: none; }
-    .footer-links a {
-      font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400;
-      color: var(--muted); text-decoration: none; transition: color 0.3s; position: relative;
-    }
+    .footer-links a { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400; color: var(--muted); text-decoration: none; transition: color 0.3s; position: relative; }
     .footer-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px; background: var(--accent); transition: width 0.35s; }
     .footer-links a:hover { color: var(--bright); }
     .footer-links a:hover::after { width: 100%; }
