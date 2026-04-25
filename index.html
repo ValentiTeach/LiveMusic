@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Жива Музика</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="style.css>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet"/>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Жива Музика</a>
+  <ul class="nav-links">
+    <li><a href="#about-section">Про нас</a></li>
+    <li><a href="#events-section">Концерти</a></li>
+    <li><a href="genres.html">Жанри</a></li>
+    <li><a href="about.html">Контакт</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="orb orb-3" aria-hidden="true"></div>
+  <div class="wave-bg" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow"><span class="live-dot"></span>Live Session · Kyiv 2025</p>
+    <h1 class="hero-title">Жива<br><em>Музика</em></h1>
+    <p class="hero-sub">Звук, що народжується тут і зараз.<br>Без фільтрів. Без кордонів.</p>
+    <a href="#events-section" class="btn">Переглянути концерти</a>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Гортай</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <span class="ticker">
+    <span>Жива Музика</span><span class="dot">✦</span>
+    <span>Kyiv Jazz Club</span><span class="dot">✦</span>
+    <span>Live Sessions 2025</span><span class="dot">✦</span>
+    <span>Джаз · Класика · Фолк</span><span class="dot">✦</span>
+    <span>Наступний концерт 05.04</span><span class="dot">✦</span>
+    <span>Квитки вже у продажу</span><span class="dot">✦</span>
+    <span>Жива Музика</span><span class="dot">✦</span>
+    <span>Kyiv Jazz Club</span><span class="dot">✦</span>
+    <span>Live Sessions 2025</span><span class="dot">✦</span>
+    <span>Джаз · Класика · Фолк</span><span class="dot">✦</span>
+    <span>Наступний концерт 05.04</span><span class="dot">✦</span>
+    <span>Квитки вже у продажу</span><span class="dot">✦</span>
+  </span>
+</div>
+
+<!-- ABOUT -->
+<section id="about-section">
+  <div id="about">
+    <div class="about-text">
+      <p class="section-label">Наша місія</p>
+      <h2>Музика, яка<br><em>дихає</em></h2>
+      <p>Жива музика — це не запис. Це момент, де артист і глядач зустрічаються в одному просторі, де кожна нота неповторна, кожна пауза — навмисна.</p>
+      <p>Ми створюємо платформу для виступів, де є місце для джазу, народної музики, авангарду й усього між ними.</p>
+      <a href="#genres-section" class="btn" style="margin-top:1.2rem;">Дослідити жанри</a>
+    </div>
+    <div class="vinyl-wrap">
+      <div class="vinyl"></div>
+      <div class="tonearm"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">240+</div>
+      <div class="stat-label">Концертів</div>
+      <div class="stat-bar"></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">80+</div>
+      <div class="stat-label">Виконавців</div>
+      <div class="stat-bar"></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">15</div>
+      <div class="stat-label">Майданчиків</div>
+      <div class="stat-bar"></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Років музики</div>
+      <div class="stat-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОДІЇ -->
+<section id="events-section">
+  <div id="events">
+    <p class="section-label">Найближчі події</p>
+    <h2>Розклад<br>концертів</h2>
+
+    <div class="tabs">
+      <input class="tab-inputs" type="radio" name="tabs" id="tab1" checked/>
+      <input class="tab-inputs" type="radio" name="tabs" id="tab2"/>
+      <input class="tab-inputs" type="radio" name="tabs" id="tab3"/>
+
+      <div class="tab-labels">
+        <label class="tab-label" for="tab1">Квітень</label>
+        <label class="tab-label" for="tab2">Травень</label>
+        <label class="tab-label" for="tab3">Червень</label>
+      </div>
+
+      <div class="tab-panels">
+        <div class="tab-panel" id="panel1">
+          <div class="event-list">
+            <div class="event-item">
+              <div class="event-date"><div class="event-day">05</div><div class="event-month">Квіт</div></div>
+              <div class="event-info"><div class="event-name">Тінь Сонця</div><div class="event-meta">Kyiv Jazz Club · 20:00</div></div>
+              <span class="event-tag">Джаз</span>
+            </div>
+            <div class="event-item">
+              <div class="event-date"><div class="event-day">12</div><div class="event-month">Квіт</div></div>
+              <div class="event-info"><div class="event-name">Оркестр без кордонів</div><div class="event-meta">Будинок Органної Музики · 19:30</div></div>
+              <span class="event-tag">Класика</span>
+            </div>
+            <div class="event-item">
+              <div class="event-date"><div class="event-day">19</div><div class="event-month">Квіт</div></div>
+              <div class="event-info"><div class="event-name">Поліна Трофіменко Квартет</div><div class="event-meta">Atlas · 21:00</div></div>
+              <span class="event-tag">Фолк / Джаз</span>
+            </div>
+            <div class="event-item">
+              <div class="event-date"><div class="event-day">27</div><div class="event-month">Квіт</div></div>
+              <div class="event-info"><div class="event-name">Нічний Сесіон</div><div class="event-meta">Divan Club · 22:00</div></div>
+              <span class="event-tag">Експеримент</span>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel2">
+          <div class="event-list">
+            <div class="event-item">
+              <div class="event-date"><div class="event-day">03</div><div class="event-month">Трав</div></div>
+              <div class="event-info"><div class="event-name">Весняний Джем</div><div class="event-meta">Kyiv Jazz Club · 20:00</div></div>
+              <span class="event-tag">Джаз</span>
+            </div>
+            <div class="event-item">
+              <div class="event-date"><div class="event-day">17</div><div class="event-month">Трав</div></div>
+              <div class="event-info"><div class="event-name">Акустичний вечір</div><div class="event-meta">Прозорий простір · 19:00</div></div>
+              <span class="event-tag">Акустика</span>
+            </div>
+            <div class="event-item">
+              <div class="event-date"><div class="event-day">24</div><div class="event-month">Трав</div></div>
+              <div class="event-info"><div class="event-name">Ансамбль «Горизонт»</div><div class="event-meta">Філармонія · 18:30</div></div>
+              <span class="event-tag">Камерна</span>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel3">
+          <div class="event-list">
+            <div class="event-item">
+              <div class="event-date"><div class="event-day">07</div><div class="event-month">Черв</div></div>
+              <div class="event-info"><div class="event-name">Літній фестиваль</div><div class="event-meta">Поштова площа · 17:00</div></div>
+              <span class="event-tag">Фестиваль</span>
+            </div>
+            <div class="event-item">
+              <div class="event-date"><div class="event-day">21</div><div class="event-month">Черв</div></div>
+              <div class="event-info"><div class="event-name">День Музики</div><div class="event-meta">Вулиці міста · весь день</div></div>
+              <span class="event-tag">Вулична</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ЖАНРИ -->
+<section id="genres-section">
+  <div id="genres">
+    <p class="section-label">Що ми граємо</p>
+    <div class="genres-grid">
+      <div class="genre-card"><div class="genre-num">01</div><div class="genre-name">Джаз</div><p class="genre-desc">Імпровізація як мова. Кожен виступ — унікальний діалог між музикантами та залом.</p></div>
+      <div class="genre-card"><div class="genre-num">02</div><div class="genre-name">Класична</div><p class="genre-desc">Від бароко до сучасності. Партитури оживають у руках живих виконавців.</p></div>
+      <div class="genre-card"><div class="genre-num">03</div><div class="genre-name">Фолк</div><p class="genre-desc">Коріння і нові гілки. Традиційний звук у сучасному виконанні.</p></div>
+      <div class="genre-card"><div class="genre-num">04</div><div class="genre-name">Акустика</div><p class="genre-desc">Мінімум обладнання, максимум емоцій. Голос і струни в тиші.</p></div>
+      <div class="genre-card"><div class="genre-num">05</div><div class="genre-name">Експеримент</div><p class="genre-desc">Межі жанрів розмиті. Простір для тих, хто шукає нове звучання.</p></div>
+      <div class="genre-card"><div class="genre-num">06</div><div class="genre-name">Камерна</div><p class="genre-desc">Невеликі ансамблі, інтимна атмосфера. Близькість до музики і виконавця.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- АРТИСТИ -->
+<section style="background: var(--bg);">
+  <div id="artists">
+    <p class="section-label">Виконавці</p>
+    <h2>Голоси<br>сезону</h2>
+    <div class="panel-grid">
+      <div class="artist-card"><div class="artist-avatar">М</div><div class="artist-name">Марко Остапів</div><div class="artist-genre">Джаз · Фортепіано</div></div>
+      <div class="artist-card"><div class="artist-avatar">О</div><div class="artist-name">Оксана Вернер</div><div class="artist-genre">Класика · Скрипка</div></div>
+      <div class="artist-card"><div class="artist-avatar">С</div><div class="artist-name">Соломія Гук</div><div class="artist-genre">Фолк · Вокал</div></div>
+      <div class="artist-card"><div class="artist-avatar">Д</div><div class="artist-name">Денис Кравець</div><div class="artist-genre">Експеримент · Гітара</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЦИТАТА -->
+<section id="quote">
+  <blockquote class="quote-text">«Музика дає голос тому, що неможливо висловити словами, але неможливо замовчати.»</blockquote>
+  <p class="quote-author">— Віктор Гюго</p>
+</section>
+
+<!-- ПІДПИСКА -->
+<section id="newsletter-section">
+  <div id="newsletter">
+    <p class="section-label">Залишайтесь на зв'язку</p>
+    <h2>Не пропустіть<br>наступний виступ</h2>
+    <p>Підпишіться на нашу розсилку і отримуйте анонси концертів, ексклюзивні інтерв'ю з виконавцями та запрошення на закриті сесії.</p>
+    <div class="input-row">
+      <input type="email" placeholder="ваш@email.com"/>
+      <button type="button"><span>Підписатись</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ПІДВАЛ -->
+<footer>
+  <span class="footer-logo">Жива Музика</span>
+  <p class="footer-copy">© 2025 · Всі права захищено</p>
+  <ul class="footer-links">
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">Facebook</a></li>
+    <li><a href="#">Spotify</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
